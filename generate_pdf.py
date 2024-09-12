@@ -7,34 +7,24 @@ from PyPDF2 import PdfMerger
 from weasyprint import CSS, HTML
 
 # Путь к локальной папке с сайтом
-# ! У нас у всех есть этот путь, переделать!
-# ! Старайся не использовать кириллицу в путях. 
 base_path = (
-    "/Users/pavelpetropavlov/Yandex.Disk.localized/литература/runestone-gh-pages/"
+    "/Users/username/Yandex.Disk.localized/литература/runestone-gh-pages/"
 )
 
-# ! Константы это будущее python!
 # Путь к индексному файлу
 index_path = os.path.join(base_path, "index.html")
 
-# ! Константы это будущее python!
 # Путь для сохранения конечного PDF-файла
 output_path = "output_local.pdf"
 
-# ! Ты оставляешь комментарии но делаешь ты это без уважения к функциям!
-# ! Мы против типизации?
 # Функция для получения всех внутренних ссылок
 def get_internal_links(file_path):
     """Функция для получения всех внутренних ссылок."""
-    # ! Док_стринги на веки!
 
-    # ! Сделать свой контекстный менеджер, __enter__ и __exit__ еще никто не отменял
     with open(file_path, "r", encoding="utf-8") as file:
         soup = BeautifulSoup(file, "html.parser")
     links = []
     for li in soup.find_all("li", class_="toctree-l1"):
-        # ! Красивое название переменной, но ты можешь придумать лучше.
-        # ! li туда же!
         a = li.find("a", class_="reference internal")
         if a:
             links.append(a["href"])
